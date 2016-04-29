@@ -19,11 +19,25 @@ feature 'admin can vindicate user' do
 
   context 'client is vindicatable' do
 
+    before { allow(Client).to receive(:find) { client } }
+
     scenario 'admin can vindicate client', js: true do
       visit client_payments_path(client)
       click_link 'Vindicate!!!'
       expect(page).to have_content('Vindication started')
     end
   end
+
+  context 'client is not vindicatable' do
+
+    before { allow(Client).to receive(:find) { client } }
+
+    scenario 'admin can vindicate client', js: true do
+      visit client_payments_path(client)
+      expect(page).not_to have_link('Vindicate!!!')
+      expect(page).not_to have_content('Vindication started')
+    end
+  end
+
 
 end

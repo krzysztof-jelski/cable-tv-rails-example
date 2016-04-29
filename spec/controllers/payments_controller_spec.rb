@@ -5,7 +5,6 @@ describe PaymentsController do
     let(:payments) { double(:payments) }
     let(:client) { double(:client, id: 1, payments: payments) }
 
-
     before do
       allow(Client).to receive(:find) { client }
       get :index, client_id: client.id
