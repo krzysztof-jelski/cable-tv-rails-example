@@ -24,6 +24,6 @@ table
         td
           = link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' }
         td
-          = link_to 'Payments', payments_path
+          = link_to 'Payments', client_payments_path(client)
 br
 = link_to 'New Client', new_client_path
