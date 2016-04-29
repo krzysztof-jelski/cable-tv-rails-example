@@ -1,3 +1,7 @@
 h1 Payments
 
 table
+  - @payments.each do |payment|
+    tr
+      td
+        = payment.due_date

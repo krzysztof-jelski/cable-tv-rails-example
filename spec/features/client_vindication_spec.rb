@@ -17,10 +17,13 @@ feature 'admin can vindicate user' do
     expect(page).to have_css('td', text: payment.due_date)
   end
 
-  # scenario 'admin can vindicate client' do
-  #   visit client_payments_path(client)
-  #   click_link 'Vindicate'
-  #   expect(page).to
-  # end
+  context 'client is vindicatable' do
+
+    scenario 'admin can vindicate client', js: true do
+      visit client_payments_path(client)
+      click_link 'Vindicate!!!'
+      expect(page).to have_content('Vindication started')
+    end
+  end
 
 end

@@ -2,8 +2,14 @@ require 'rails_helper'
 
 describe PaymentsController do
   describe '#index' do
-    let!(:client) { create(:client) }
-    before { get :index, client_id: client.id }
+    let(:payments) { double(:payments) }
+    let(:client) { double(:client, id: 1, payments: payments) }
+
+
+    before do
+      allow(Client).to receive(:find) { client }
+      get :index, client_id: client.id
+    end
 
     it 'returns status 200' do
       expect(response.status).to eq(200)
