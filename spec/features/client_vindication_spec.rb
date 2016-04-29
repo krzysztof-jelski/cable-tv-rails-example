@@ -18,6 +18,8 @@ feature 'admin can vindicate user' do
   end
 
   context 'client is vindicatable' do
+    let!(:subscription1) { create(:subscription, price: '1001') }
+    let!(:payment5) { create(:payment, client: client, due_date: DateTime.now - 181.day, subscription: subscription1) }
 
     before { allow(Client).to receive(:find) { client } }
 

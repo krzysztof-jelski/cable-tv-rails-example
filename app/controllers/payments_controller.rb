@@ -1,5 +1,12 @@
 class PaymentsController < ApplicationController
   def index
-    @payments = Client.find(params[:client_id]).payments
+    @client = fetch_client
+    @payments = @client.payments
+  end
+
+  private
+
+  def fetch_client
+    Client.find(params[:client_id])
   end
 end
