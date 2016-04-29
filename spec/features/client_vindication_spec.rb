@@ -9,6 +9,8 @@ feature 'admin can vindicate user' do
   end
 
   scenario 'admin can vindincate client' do
+    # visit 'clients/1/payments'
+
   end
 
 end
